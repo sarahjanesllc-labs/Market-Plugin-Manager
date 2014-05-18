@@ -1,0 +1,7 @@
+/Market-Plugin-Manager-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.yml
+/.prove
