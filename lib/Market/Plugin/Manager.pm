@@ -4,36 +4,31 @@ package Market::Plugin::Manager;
 
 use Mojo::Base 'Mojolicious::Plugin';
 
-use Market::Plugin::Manager::Model;
-
 sub register {
     my ($self, $app) = @_;
 
-    $app->helper(
-        manager_model => sub {
-            my $self = shift;
-            return Market::Plugin::Manager::Model->new(
-                dbname => $self->config->{dbname});
-        }
-    );
-
-    $app->helper(
-        manager_find_one => sub {
-            my $self     = shift;
-            my $username = shift;
-            return $self->manager_model->get($username) || undef;
-        }
-    );
-
-    $app->helper(
-        manager_is_admin => sub {
-            my $self = shift;
-            my $user = shift;
-            return 0 unless $user->{is_manager};
-        }
-    );
-
     push @{$app->routes->namespaces}, 'Market::Plugin::Manager';
+    my $manager = $app->routes->under(
+      sub {
+        my $self = shift;
+        return $self->auth_role_fail
+          unless $self->auth_has_role("manager", "is_staff");
+      }
+    );
+
+    $manager->any('/manage')->to('market#index')->name('manager_index');
+    $manager->any('/manage/vendors')->to('vendor#index')->name('manager_vendors');
+    return;
 }
 
 1;
+
+__END__
+
+=head1 ROLES
+
+=head2 manager
+
+* is_staff - is user staff of market
+
+=cut

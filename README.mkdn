@@ -6,6 +6,12 @@ Market::Plugin::Manager - Market management plugin
 
 version 0.001
 
+# ROLES
+
+## manager
+
+\* is\_staff - is user staff of market
+
 # AUTHOR
 
 Adam Stokes <adamjs@cpan.org>
