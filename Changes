@@ -1,10 +1,18 @@
 ==================================================
-Changes from 2013-05-19 00:00:00 +0000 to present.
+Changes from 2013-05-20 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.001 at 2014-05-19 22:11:22 +0000
+version 0.001 at 2014-05-20 02:57:07 +0000
 ------------------------------------------
+
+  Change: 9fb8ac525c9d57eec8450f862516744a9b0c697c
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-05-19 18:19:41 +0000
+
+    update plugin
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
 
   Change: 00f1277a4a0445d28818db80cdc2cb5071252598
   Author: Adam Stokes <adam.stokes@ubuntu.com>
