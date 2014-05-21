@@ -24,4 +24,4 @@ requires:
   Mojo::Base: '0'
   Mojo::Util: '0'
   Skryf::Util: '0'
-version: '0.1'
+version: '0.2'

@@ -3,8 +3,26 @@ Changes from 2013-05-21 00:00:00 +0000 to present.
 ==================================================
 
 ----------------------------------------
-version 0.1 at 2014-05-21 05:05:33 +0000
+version 0.2 at 2014-05-21 16:25:06 +0000
 ----------------------------------------
+
+  Change: 8c01a4e010db7c94653d9dd5607d193783daf0aa
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-05-21 10:50:48 +0000
+
+    add vendor delete
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+----------------------------------------
+version 0.1 at 2014-05-21 05:05:36 +0000
+----------------------------------------
+
+  Change: eb9b673ae4d3bfecaf74ff9881729948c0e70ca5
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-05-21 01:05:36 +0000
+
+    v0.1 
 
   Change: 155139735671588e5f70c5b759415f12b53f64f9
   Author: Adam Stokes <adam.stokes@ubuntu.com>

@@ -3,6 +3,7 @@ package Market::Plugin::Manager::Vendor;
 # ABSTRACT: market manager vendor controller
 
 use Mojo::Base 'Mojolicious::Controller';
+use Mojo::Util qw(hmac_sha1_sum);
 use Skryf::Util;
 use Hash::Merge;
 
@@ -19,7 +20,14 @@ sub modify {
   $self->stash(vendor => $vendor);
   if ($self->req->method eq "POST") {
     my $params = $self->req->params->to_hash;
-    $params->{slug} = Skryf::Util->slugify($params->{vendorname});
+    if (!$vendor) {
+      $params->{slug} = Skryf::Util->slugify($params->{vendorname});
+    }
+    if ($params->{password} eq $params->{confirmpassword}) {
+        $params->{password} =
+          hmac_sha1_sum($self->app->secrets->[0],
+            $params->{password});
+    }
     my $merge = Hash::Merge->new('RIGHT_PRECEDENT');
     $self->db->namespace('vendors')->save($merge->merge($vendor, $params));
     $self->flash(success => "Vendor modified.");
