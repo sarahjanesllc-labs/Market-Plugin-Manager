@@ -3,8 +3,16 @@ Changes from 2013-05-21 00:00:00 +0000 to present.
 ==================================================
 
 ----------------------------------------
-version 0.2 at 2014-05-21 16:25:06 +0000
+version 0.2 at 2014-05-21 16:25:28 +0000
 ----------------------------------------
+
+  Change: 75f6c2b2629887d7be2c314d18f256e3e982114c
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-05-21 12:25:20 +0000
+
+    add vendor support
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
 
   Change: 8c01a4e010db7c94653d9dd5607d193783daf0aa
   Author: Adam Stokes <adam.stokes@ubuntu.com>
