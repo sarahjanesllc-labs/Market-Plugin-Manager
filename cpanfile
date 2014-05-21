@@ -2,6 +2,7 @@ requires "DateTime" => "0";
 requires "Hash::Merge" => "0";
 requires "Mojo::Base" => "0";
 requires "Mojo::Util" => "0";
+requires "Skryf::Util" => "0";
 
 on 'test' => sub {
   requires "Mojolicious" => "0";

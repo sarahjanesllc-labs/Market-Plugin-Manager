@@ -23,7 +23,8 @@ my %WriteMakefileArgs = (
     "DateTime" => 0,
     "Hash::Merge" => 0,
     "Mojo::Base" => 0,
-    "Mojo::Util" => 0
+    "Mojo::Util" => 0,
+    "Skryf::Util" => 0
   },
   "TEST_REQUIRES" => {
     "Mojolicious" => 0,
@@ -33,7 +34,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.1",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -48,6 +49,7 @@ my %FallbackPrereqs = (
   "Mojolicious" => 0,
   "Pod::Elemental::Transformer::List" => 0,
   "Pod::Weaver::Section::WarrantyDisclaimer" => 0,
+  "Skryf::Util" => 0,
   "Test::Mojo" => 0,
   "Test::More" => 0,
   "Test::NoTabs" => 0
