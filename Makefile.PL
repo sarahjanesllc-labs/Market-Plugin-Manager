@@ -20,7 +20,10 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Market::Plugin::Manager",
   "PREREQ_PM" => {
-    "Mojo::Base" => 0
+    "DateTime" => 0,
+    "Hash::Merge" => 0,
+    "Mojo::Base" => 0,
+    "Mojo::Util" => 0
   },
   "TEST_REQUIRES" => {
     "Mojolicious" => 0,
@@ -38,7 +41,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "DateTime" => 0,
+  "Hash::Merge" => 0,
   "Mojo::Base" => 0,
+  "Mojo::Util" => 0,
   "Mojolicious" => 0,
   "Pod::Elemental::Transformer::List" => 0,
   "Pod::Weaver::Section::WarrantyDisclaimer" => 0,

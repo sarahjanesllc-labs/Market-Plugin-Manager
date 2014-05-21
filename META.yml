@@ -19,5 +19,8 @@ meta-spec:
   version: '1.4'
 name: Market-Plugin-Manager
 requires:
+  DateTime: '0'
+  Hash::Merge: '0'
   Mojo::Base: '0'
+  Mojo::Util: '0'
 version: '0.001'
