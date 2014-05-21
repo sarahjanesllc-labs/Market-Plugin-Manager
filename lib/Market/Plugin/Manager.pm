@@ -22,6 +22,7 @@ sub register {
     $manager->any('/manage/staff/modify')->to('market#modify_staff')->name('manager_staff_modify');
     $manager->any('/manage/vendors')->to('vendor#index')->name('manager_vendors');
     $manager->any('/manage/vendors/modify/:slug')->to('vendor#modify')->name('manager_vendors_modify');
+    $manager->any('/manage/vendors/delete/:slug')->to('vendor#delete')->name('manager_vendors_delete');
     return;
 }
 

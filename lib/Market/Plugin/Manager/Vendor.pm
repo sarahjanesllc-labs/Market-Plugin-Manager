@@ -29,4 +29,12 @@ sub modify {
   }
 }
 
+sub delete {
+  my $self = shift;
+  my $slug = $self->param('slug');
+  $self->db->namespace('vendors')->remove({slug => $slug});
+  $self->flash(success => sprintf("Vendor: %s deleted", $slug));
+  $self->redirect_to($self->url_for('manager_vendors'));
+}
+
 1;
