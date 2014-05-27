@@ -4,6 +4,7 @@ package Market::Plugin::Manager::Market;
 
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(hmac_sha1_sum);
+use Skryf::Util;
 use Hash::Merge;
 use DateTime;
 
@@ -21,8 +22,12 @@ sub settings {
     $self->stash(market_cfg    => $market_cfg);
     if ($self->req->method eq "POST") {
         my $merge = Hash::Merge->new('RIGHT_PRECEDENT');
-        $self->app->log->debug("posting market: " . $market_cfg->{_id});
         my $params = $self->req->params->to_hash;
+        if (!$market_cfg->{market_key}) {
+            $params->{market_key} =
+              Skryf::Util->slugify($params->{marketname});
+        }
+        $self->app->log->debug("posting market: " . $market_cfg->{_id});
         $self->db->namespace('market_cfg')
           ->save($merge->merge($market_cfg, $params));
         $self->flash(success => "Market settings are updated.");
@@ -56,4 +61,8 @@ sub modify_staff {
     $self->redirect_to($self->url_for('manager_site_settings'));
 }
 
+# 3rd party services
+sub paypal {
+  my $self = shift;
+}
 1;

@@ -20,8 +20,10 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Market::Plugin::Manager",
   "PREREQ_PM" => {
+    "DDP" => 0,
     "DateTime" => 0,
     "Hash::Merge" => 0,
+    "Hash::Merge::Simple" => 0,
     "Mojo::Base" => 0,
     "Mojo::Util" => 0,
     "Skryf::Util" => 0
@@ -34,7 +36,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.3",
+  "VERSION" => "0.4",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -42,8 +44,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "DDP" => 0,
   "DateTime" => 0,
   "Hash::Merge" => 0,
+  "Hash::Merge::Simple" => 0,
   "Mojo::Base" => 0,
   "Mojo::Util" => 0,
   "Mojolicious" => 0,

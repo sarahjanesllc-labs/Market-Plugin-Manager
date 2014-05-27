@@ -5,7 +5,8 @@ package Market::Plugin::Manager::Vendor;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::Util qw(hmac_sha1_sum);
 use Skryf::Util;
-use Hash::Merge;
+use Hash::Merge::Simple qw(merge);
+use DDP;
 
 sub index {
   my $self = shift;
@@ -14,27 +15,31 @@ sub index {
 }
 
 sub modify {
-  my $self = shift;
-  my $slug = $self->param('slug');
-  my $vendor = $self->db->namespace('vendors')->find_one({slug => $slug});
-  $self->stash(vendor => $vendor);
-  if ($self->req->method eq "POST") {
-    my $params = $self->req->params->to_hash;
-    if (!$vendor) {
-      $params->{slug} = Skryf::Util->slugify($params->{vendorname});
+    my $self    = shift;
+    my $slug    = $self->param('slug');
+    my $vendor = $self->db->namespace('vendors')->find_one({slug => $slug});
+    if ($self->req->method eq "POST") {
+        my $params = $self->req->params->to_hash;
+        if ($params->{password} eq $params->{confirmpassword}) {
+            $self->app->log->debug("Processing new password");
+            $params->{password} =
+              hmac_sha1_sum($self->app->secrets->[0], $params->{password});
+        }
+
+        # update vendor settings
+        if (!keys %{$vendor}) {
+            $params->{slug} = Skryf::Util->slugify($params->{vendorname});
+        }
+        $vendor = merge($vendor, $params);
+        $self->db->namespace('vendors')->save($vendor);
+
+        $self->flash(success => "Vendor modified.");
+        $self->redirect_to('manager_vendors_modify', { slug => $vendor->{slug} });
     }
-    if ($params->{password} eq $params->{confirmpassword}) {
-        $params->{password} =
-          hmac_sha1_sum($self->app->secrets->[0],
-            $params->{password});
+    else {
+        $self->stash(vendor => $vendor);
+        $self->render('/manage/vendor/modify');
     }
-    my $merge = Hash::Merge->new('RIGHT_PRECEDENT');
-    $self->db->namespace('vendors')->save($merge->merge($vendor, $params));
-    $self->flash(success => "Vendor modified.");
-    $self->redirect_to('manager_vendors');
-  } else {
-    $self->render('/manage/vendor/modify');
-  }
 }
 
 sub delete {

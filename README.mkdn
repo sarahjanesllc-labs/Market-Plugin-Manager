@@ -4,7 +4,7 @@ Market::Plugin::Manager - Market management plugin
 
 # VERSION
 
-version 0.3
+version 0.4
 
 # ROLES
 

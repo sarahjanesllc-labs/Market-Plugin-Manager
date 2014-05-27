@@ -1,5 +1,7 @@
+requires "DDP" => "0";
 requires "DateTime" => "0";
 requires "Hash::Merge" => "0";
+requires "Hash::Merge::Simple" => "0";
 requires "Mojo::Base" => "0";
 requires "Mojo::Util" => "0";
 requires "Skryf::Util" => "0";
